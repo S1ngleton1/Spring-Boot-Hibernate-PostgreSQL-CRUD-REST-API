@@ -1,4 +1,5 @@
-Simple REST API that allows you to perform operations on the PostgreSQL database 
+Simple REST API that allows you to perform operations on the PostgreSQL database. 
+
 Create:
 ![screenshot_1](results/create.PNG)
 Read:
