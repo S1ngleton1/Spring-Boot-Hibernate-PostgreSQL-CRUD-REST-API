@@ -1,25 +1,15 @@
 package com.spring.rest.api.spring_rest.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.spring.rest.api.spring_rest.exception.ValidationException;
 import com.spring.rest.api.spring_rest.model.Employee;
 import com.spring.rest.api.spring_rest.service.EmployeeService;
 import com.spring.rest.api.spring_rest.validator.EmployeeValidator;
-
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/employees")

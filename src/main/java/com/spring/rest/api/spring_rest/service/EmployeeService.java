@@ -1,9 +1,6 @@
 package com.spring.rest.api.spring_rest.service;
 
-import com.google.gson.JsonObject;
 import com.spring.rest.api.spring_rest.model.Employee;
-import org.json.JSONArray;
-import org.json.JSONObject;
 import org.springframework.validation.BindingResult;
 
 import java.util.HashMap;
