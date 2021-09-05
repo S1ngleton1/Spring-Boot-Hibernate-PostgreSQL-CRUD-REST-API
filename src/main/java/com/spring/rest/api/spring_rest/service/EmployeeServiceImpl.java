@@ -1,9 +1,11 @@
 package com.spring.rest.api.spring_rest.service;
 
+import com.spring.rest.api.spring_rest.assembler.EmployeeModelAssembler;
 import com.spring.rest.api.spring_rest.exception.ResourceNotFoundException;
 import com.spring.rest.api.spring_rest.model.Employee;
 import com.spring.rest.api.spring_rest.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.EntityModel;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -12,11 +14,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService{
     @Autowired
     private EmployeeRepository employeeRepository;
+    @Autowired
+    private EmployeeModelAssembler employeeModelAssembler;
 
     @Override
     public Employee saveEmployee(Employee employee) {
@@ -97,5 +102,13 @@ public class EmployeeServiceImpl implements EmployeeService{
             map.put("email",emailArray);
         }
         return map;
+    }
+
+    @Override
+    public List<EntityModel<Employee>> getALlEmployeesHateoas() {
+        List<EntityModel<Employee>> employees = employeeRepository.findAll().stream() //
+                .map(employeeModelAssembler::toModel) //
+                .collect(Collectors.toList());
+        return employees;
     }
 }
